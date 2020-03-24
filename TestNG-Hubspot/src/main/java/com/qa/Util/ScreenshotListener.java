@@ -16,12 +16,12 @@ import com.qa.Base.*;
 
 
 
-
+// only change is import base class which has getdriver() associated with ThreadLocal driver and screenshot method
 public class ScreenshotListener extends TestListenerAdapter{
 	 @SuppressWarnings("static-access")
 	@Override
 	    public void onTestFailure(ITestResult result) {
-	    BasePage base = new BasePage();
+		 					BasePage base = new BasePage();
 	        Calendar calendar = Calendar.getInstance();
 	        SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
 	        String methodName = result.getName();

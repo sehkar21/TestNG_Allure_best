@@ -15,6 +15,14 @@ import com.qa.Pages.LoginPage;
 import com.qa.Util.AllureReports;
 import com.qa.config.Readconfig;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
+
 
 
 @Listeners({AllureReports.class})
@@ -31,7 +39,12 @@ public class LoginTest  extends BasePage {
 	}
 	
 	
-	
+	@Severity(SeverityLevel.BLOCKER)	
+	@Description("Login into the Application........")
+	@Epic("EP001")
+	@Feature("Feature1: Login page")
+	@Story("Story: Login page")
+	@Step(" Login page Verifying")
 	@Test(priority=1)
 	public void login() throws InterruptedException {
 		
@@ -46,6 +59,13 @@ public class LoginTest  extends BasePage {
 		logger.info("*************logging in to the Application****************");
 	}	
 	
+	
+	@Severity(SeverityLevel.NORMAL)	
+	@Description("Login Page Title verfication........")
+	@Epic("EP002")
+	@Feature("Feature2: Login page title verify")
+	@Story("Story:Login page title verify")
+	@Step("Login page title verify")
 	@Test(priority=2)
 	public void confirmTitle() throws InterruptedException {
 		Thread.sleep(5000);

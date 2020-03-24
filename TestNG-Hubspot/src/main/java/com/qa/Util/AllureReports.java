@@ -34,6 +34,7 @@ public class AllureReports implements ITestListener {
 
 	}
 
+	//only change is import getdriver() from Base class associated with ThreadLocal driver
 	@Override // Test Case Failure
 	public void onTestFailure(ITestResult result) {
 		System.out.println("Iam on Test FailureMethod" + getTestMethodName(result) + "Failed");
@@ -60,12 +61,12 @@ public class AllureReports implements ITestListener {
 	}
 
 	// method for Screenshot associated with Test case Failure
-	@Attachment(value = "pagescreenshot", type = "image/png")
+	/*@Attachment(value = "pagescreenshot", type = "image/png")
 	private byte[] saveScreenshotPNG(WebDriver driver) {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 
 	}
-
+*/
 	@Override // Test case Skipped
 	public void onTestSkipped(ITestResult result) {
 		System.out.println("I am in onTestSkipped method " + getTestMethodName(result) + " skipped");

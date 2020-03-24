@@ -89,6 +89,8 @@ public class ExtentReportListener extends BasePage implements ITestListener {
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
+	
+//change only get screenshot importing from baseclass which as link with getdriver() method that is associated with threadlocal driver..
 	public synchronized void onTestFailure(ITestResult result) {
 		System.out.println((result.getMethod().getMethodName() + " failed!"));
 		

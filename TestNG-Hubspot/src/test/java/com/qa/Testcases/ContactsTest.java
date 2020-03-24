@@ -18,6 +18,14 @@ import com.qa.Pages.ContactsPage;
 
 import com.qa.Util.ExcelUtils;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
+
 
 
 
@@ -26,7 +34,12 @@ import com.qa.Util.ExcelUtils;
 public class ContactsTest extends LoginTest{
 	
 	
-
+	@Severity(SeverityLevel.BLOCKER)	
+	@Description("create contact on Home Page........")
+	@Epic("EP003")
+	@Feature("Feature3: contacts")
+	@Story("Story:contatcs creation")
+	@Step("creating contacts")
 	@Test(priority=3,enabled=true)
 	public void createcontact() throws InterruptedException  {
 		
@@ -61,14 +74,24 @@ public class ContactsTest extends LoginTest{
 		logger.info("************** Creating new Contacts ***************");
 	}
 	
-	
+	@Severity(SeverityLevel.MINOR)	
+	@Description("verify  Home Page........")
+	@Epic("EP006")
+	@Feature("Feature6: Homepage title")
+	@Story("Story: Homepage title")
+	@Step(" Homepage title Verifying")
 	@Test(priority =6)
 	public void Homepagetitle() {
 		Assert.assertTrue(false);
 	}
 	
-	
-	@Test(priority=4,dependsOnMethods = {"createcontact"}, enabled =false)
+	@Severity(SeverityLevel.CRITICAL)	
+	@Description("WebTable Reading.......")
+	@Epic("EP004")
+	@Feature("Feature4: Reading WebTable")
+	@Story("Story:  Reading WebTable")
+	@Step("Verifying  WebTable")
+	@Test(priority=4,dependsOnMethods = {"createcontact"}, enabled =true)
 	public void Webtable() throws InterruptedException {
 		
 		Thread.sleep(5000);
@@ -115,8 +138,13 @@ public class ContactsTest extends LoginTest{
 		return LoginData;
 		
 	}
-	
-	@Test(priority=5 , dataProvider="LoginData" , enabled=false)
+	@Severity(SeverityLevel.CRITICAL)	
+	@Description("Data driven from Excel.......")
+	@Epic("EP005")
+	@Feature("Feature5:Data driven from Excel.")
+	@Story("Story:  Data driven from Excel.")
+	@Step("Verifying Data driven from Excel.")
+	@Test(priority=5 , dataProvider="LoginData" , enabled=true)
 	public void LoginDataExcel(String email ,String firstname, String lastname, String jobtitle) throws InterruptedException {
 		
 		ContactsPage contacts = new ContactsPage(driver);

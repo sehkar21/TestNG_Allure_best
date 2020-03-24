@@ -7,6 +7,9 @@
 	
 		 <listener class-name="com.qa.Util.AllureReports" />
 		<listener class-name="com.qa.Util.ExtentReportListener" />
+		<listener class-name="com.qa.Util.TesultsListener" />
+		<listener class-name="com.qa.Util.ScreenshotListener" />
+		<listener class-name="com.qa.Util.pdfListener" />
 
 	</listeners>
 	 
