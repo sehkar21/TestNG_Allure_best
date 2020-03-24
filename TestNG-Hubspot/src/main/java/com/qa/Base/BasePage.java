@@ -2,9 +2,13 @@ package com.qa.Base;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +20,8 @@ public class BasePage {
 	Readconfig config = new Readconfig();
 	public String URL = config.ApplicationUrl(); // from read config and thats from config.properties
 	public  WebDriver driver; // webdriver instantziation
+	public Logger logger=LogManager.getLogger(this.getClass()); // Log4j2 code
+	
 
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>(); // webdriver for multiple threads
 
@@ -43,13 +49,18 @@ public class BasePage {
 		driver.quit();
 	}
 
-	public String getScreenshot() throws IOException {
+	public String getScreenshot() {
 
-		TakesScreenshot tk = (TakesScreenshot) driver;
-		File src = tk.getScreenshotAs(OutputType.FILE);
-		String path = System.getProperty("user.dir") + "/screenshot/" + System.currentTimeMillis() + ".png";
+		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());//time stamp
+		File src = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
+		String path = System.getProperty("user.dir") + "/screenshots/" + System.currentTimeMillis() + timeStamp+ ".png";
 		File dest = new File(path);
+		try {
 		FileUtils.copyFile(src, dest);
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 		return path;
 	}
 

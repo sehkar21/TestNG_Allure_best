@@ -27,6 +27,7 @@ public class LoginTest  extends BasePage {
 		BasePage bs =new  BasePage();
 		driver = bs.init_driver();
 		driver.get(URL);
+		logger.info("***************URL Entered***************");
 	}
 	
 	
@@ -42,6 +43,7 @@ public class LoginTest  extends BasePage {
 		login.loginbutton().click();
 		
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		logger.info("*************logging in to the Application****************");
 	}	
 	
 	@Test(priority=2)
@@ -56,7 +58,7 @@ public class LoginTest  extends BasePage {
 		 * e) { e.printStackTrace(); }
 		 */
 		Thread.sleep(6000);
-		
+		logger.info("*************Verifying the Title****************");
 	}
 	
 }

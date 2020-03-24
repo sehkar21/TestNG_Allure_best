@@ -8,22 +8,21 @@ import java.util.concurrent.TimeUnit;
 
 
 import org.openqa.selenium.WebElement;
-
-
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
+
 import org.testng.annotations.Test;
 
 
 import com.qa.Pages.ContactsPage;
-import com.qa.Util.AllureReports;
+
 import com.qa.Util.ExcelUtils;
 
 
 
 
 
-@Listeners({AllureReports.class})
+
 public class ContactsTest extends LoginTest{
 	
 	
@@ -59,9 +58,17 @@ public class ContactsTest extends LoginTest{
 		
 		contacts.createcontactbtn().click();
 		
+		logger.info("************** Creating new Contacts ***************");
 	}
 	
-	@Test(priority=4,dependsOnMethods = {"createcontact"}, enabled =true)
+	
+	@Test(priority =6)
+	public void Homepagetitle() {
+		Assert.assertTrue(false);
+	}
+	
+	
+	@Test(priority=4,dependsOnMethods = {"createcontact"}, enabled =false)
 	public void Webtable() throws InterruptedException {
 		
 		Thread.sleep(5000);
@@ -80,6 +87,8 @@ public class ContactsTest extends LoginTest{
 				WebElement w1 =tdata.get(j);
 				 System.out.println(w1.getText());
 			}
+			
+			logger.info("************** Printing the WebTable Data ***************");
 				}
 	
 		driver.navigate().back();
@@ -107,7 +116,7 @@ public class ContactsTest extends LoginTest{
 		
 	}
 	
-	@Test(priority=5 , dataProvider="LoginData" , enabled=true)
+	@Test(priority=5 , dataProvider="LoginData" , enabled=false)
 	public void LoginDataExcel(String email ,String firstname, String lastname, String jobtitle) throws InterruptedException {
 		
 		ContactsPage contacts = new ContactsPage(driver);
@@ -127,6 +136,8 @@ public class ContactsTest extends LoginTest{
 		Thread.sleep(3000);
 		driver.navigate().back();
 		Thread.sleep(3000);
+		
+		logger.info("************** Creating the new contacts using Data driven And Data Provider Methods ***************");
 	}
 	
 }
